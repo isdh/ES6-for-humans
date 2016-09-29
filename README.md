@@ -299,12 +299,12 @@ child.foo(); // Hello from the Parent
 
 <br>
 
-### 9. Template Literal and Delimiters
+### 9. テンプレートリテラルとデリミタ
 
-ES6 introduces an easier way to add interpolations which are evaluated automatically.
+ES6では文字列への代入をかんたんにできます。代入したと同時に自動的に評価されます。
 
-* <code>\`${ ... }\`</code> is used for rendering the variables.
-* <code>\`</code> Backtick is used as delimiter.
+* <code>\`${ ... }\`</code>は変数をレンダリングできる
+* <code>\`</code> `\`バックスラッシュはデリミタとして使用する
 
 ```javascript
 let user = 'Kevin';
