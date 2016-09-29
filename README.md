@@ -11,10 +11,10 @@
 * [オブジェクトリテラルの拡張](#5-object-literal-extensions)
 * [８進数と２進数リテラル](#6-octal-and-binary-literals)
 * [配列とオブジェクトの分解](#7-array-and-object-destructuring)
-* [super in Objects](#8-super-in-objects)
-* [Template Literal and Delimiters](#9-template-literal-and-delimiters)
+* [オブジェクトにおける`super`の使用](#8-super-in-objects)
+* [テンプレートリテラルとデリミタ](#9-template-literal-and-delimiters)
 * [for...of vs for...in](#10-forof-vs-forin)
-* [Map and WeakMap](#11-map-and-weakmap)
+* [Map と WeakMap](#11-map-and-weakmap)
 * [Set and WeakSet](#12-set-and-weakset)
 * [Classes in ES6](#13-classes-in-es6)
 * [Symbol](#14-symbol)
@@ -343,11 +343,11 @@ for (let nickname in nicknames) {
 
 <br>
 
-### 11. Map and WeakMap
+### 11. Map と WeakMap
 
-ES6 introduces new set of data structures called `Map` and `WeakMap`. Now, we actually use maps in JavaScript all the time. In fact every object can be considered as a `Map`.
+ES6には新しいデータ構造の`Map`と`WeakMap`があります。全てのオブジェクトは、`Map`とも考えられるので、私たちはJavaScriptでいつも`Map`を使用しているといえます。
 
-An object is made of keys (always strings) and values, whereas in `Map`, any value (both objects and primitive values) may be used as either a key or a value. Have a look at this piece of code:
+オブジェクトがキー(常に文字である)と値で出来ているのに対し、`Map`では、すべての値(オブジェクトでも、プリミティブな値でも！)をキーにも値にも使用することができるのです。コードを見て下さい。
 
 ```javascript
 var myMap = new Map();
@@ -356,26 +356,26 @@ var keyString = "a string",
     keyObj = {},
     keyFunc = function() {};
 
-// setting the values
-myMap.set(keyString, "value associated with 'a string'");
-myMap.set(keyObj, "value associated with keyObj");
-myMap.set(keyFunc, "value associated with keyFunc");
+// 値をセットします
+myMap.set(keyString, "'a string'　に割り当てた値");
+myMap.set(keyObj, "keyObj　に割り当てた値");
+myMap.set(keyFunc, "keyFunc　に割り当てた値");
 
 myMap.size; // 3
 
-// getting the values
-myMap.get(keyString);    // "value associated with 'a string'"
-myMap.get(keyObj);       // "value associated with keyObj"
-myMap.get(keyFunc);      // "value associated with keyFunc"
+// 値を取得します
+myMap.get(keyString);    // "'a string' に割り当てた値"
+myMap.get(keyObj);       // "keyObj に割り当てた値"
+myMap.get(keyFunc);      // "keyFunc に割り当てた値"
 ```
 
 **WeakMap**
 
-A `WeakMap` is a Map in which the keys are weakly referenced, that doesn’t prevent its keys from being garbage-collected. That means you don't have to worry about memory leaks.
+`WeakMap`はマップです。しかし、ガベージコレクトされる、弱い参照を持つキーになっています。つまり、`WeakMap`ではメモリリークを心配する必要がありません。
 
-Another thing to note here- in `WeakMap` as opposed to `Map` *every key must be an object*.
+また、`Map`に対して、`WeakMap`では、*全てのキーはオブジェクト*でなくてはなりません。
 
-A `WeakMap` only has four methods `delete(key)`, `has(key)`, `get(key)` and `set(key, value)`.
+`WeakMap`はたった４つのメソッドしか持ちません。`delete(key)`, `has(key)`, `get(key)` と `set(key, value)`です。
 
 ```javascript
 let w = new WeakMap();
