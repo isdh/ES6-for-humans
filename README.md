@@ -16,7 +16,7 @@
 * [for...of vs for...in](#10-forof-vs-forin)
 * [Map と WeakMap](#11-map-and-weakmap)
 * [Set と WeakSet](#12-set-and-weakset)
-* [Classes in ES6](#13-classes-in-es6)
+* [ES6のクラス](#13-classes-in-es6)
 * [Symbol](#14-symbol)
 * [Iterators](#15-iterators)
 * [Generators](#16-generators)
@@ -457,11 +457,11 @@ ws.has(window);    // false, window has been removed
 
 ### 13. Classes in ES6
 
-ES6 introduces new class syntax. One thing to note here is that ES6 class is not a new object-oriented inheritance model. They just serve as a syntactical sugar over JavaScript's existing prototype-based inheritance.
+ES6にはクラスのシンタックスが新しく追加されました。注意すべきことは、ES6のクラスはオブジェクト指向の継承モデルではないということです。あくまで既存のプロトタイプベースのJavaScriptのシンタックスシュガー(糖衣構文)に過ぎません。
 
-One way to look at a class in ES6 is just a new syntax to work with prototypes and contructor functions that we'd use in ES5.
+ES6のクラスは、新しいシンタックスです。今まで使用していたES5のprototype,constructor関数が内部で働きます。
 
-Functions defined using the `static` keyword implement static/class functions on the class.
+`static`キーワードをもちいることで静的関数をクラス内に定義できます。
 
 ```javascript
 class Task {
@@ -484,9 +484,9 @@ task.showId(); // 23
 Task.loadAll(); // "Loading all tasks.."
 ```
 
-**extends and super in classes**
+**クラスにおけるextendsとsuper**
 
-Consider the following code:
+次のコードを見て下さい。
 
 ```javascript
 class Car {
@@ -507,16 +507,16 @@ let c = new Porsche();
 // Creating Porsche
 ```
 
-`extends` allow child class to inherit from parent class in ES6. It is important to note that the derived constructor must call `super()`.
+`extends`はES6において、親クラスから子クラスへの継承を可能にします。コンストラクターで`super`を呼び出すことを忘れないでください。
 
-Also, you can call parent class's method in child class's methods using `super.parentMethodName()`
+また、親クラスのメソッドを子クラスから`super.parentMethodName()`といった形で使用できます。
 
-[Read more about classes here](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
+[クラスについてもっと知りたい](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
 
-A few things to keep in mind:
+とどめておくべきこと
 
-* Class declarations are not hoisted. You first need to declare your class and then access it, otherwise ReferenceError will be thrown.
-* There is no need to use `function` keyword when defining functions inside a class definition.
+*クラス宣言はホスティングをしません。はじめにクラスを宣言してからアクセスできます。そうでないとReferenceErrorが投げられます。
+*クラス宣言の内部で関数を定義するときに、`function`キーワードは使用する必要はありません。
 
 <br>
 
