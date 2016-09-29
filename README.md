@@ -274,9 +274,9 @@ console.log(a, b, c); // 4 5 6
 
 <br>
 
-### 8. super in Objects
+### 8. オブジェクトにおける`super`の使用
 
-ES6 allows to use `super` method in (classless) objects with prototypes. Following is a simple example:
+ES6では`super`関数をプロトタイプと一緒に使用することを可能になりました。
 
 ```javascript
 var parent = {
