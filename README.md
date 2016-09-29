@@ -5,7 +5,7 @@
 ### Table of Contents
 
 * [`let`, `const` と ブロックスコープ](#1-let-const-and-block-scoping)
-* [Arrow Functions](#2-arrow-functions)
+* [アロー関数](#2-arrow-functions)
 * [Default Function Parameters](#3-default-function-parameters)
 * [Spread/Rest Operator](#4-spread--rest-operator)
 * [Object Literal Extensions](#5-object-literal-extensions)
@@ -75,22 +75,23 @@ ES6の`const`は、値への参照を示す事になります。言い換えれ�
 
 <br>
 
-### 2. Arrow Functions
+### 2. アロー関数
 
-Arrow functions are a short-hand notation for writing functions in ES6. The arrow function definition consists of a parameter list `( ... )`, followed by the `=>` marker and a function body.
+アロー関数はES6で関数を書く際の短縮表記のことです。アロー関数は`=>`に続く関数本体と、`(...)`で表される引数の一覧で定義します。
 
 ```javascript
-// Classical Function Expression
+// クラシカルな関数式
 let addition = function(a, b) {
     return a + b;
 };
 
-// Implementation with arrow function
+// アロー関数で実装
 let addition = (a, b) => a + b;
 ```
-Note that in the above example, the `addition` arrow function is implemented with "concise body" which does not need an explicit return statement.
 
-Here is an example with the usual "block body"
+上記の例に加えて、アロー関数では`return`文を書く必要がありません。関数本体を簡潔に実装するためです。
+
+これが通常のブロックで関数を記述した例です。
 
 ```javascript
 let arr = ['apple', 'banana', 'orange'];
@@ -102,28 +103,28 @@ let breakfast = arr.map(fruit => {
 console.log(breakfast); // ['apples', 'bananas', 'oranges']
 ```
 
-**Behold! There is more...**
+**ちょっと待って！　もう一つ...**
 
-Arrow functions don't just make the code shorter. They are closely related to `this` binding behavior.
+アロー関数はコードそのものを短くするわけではありません。`this`を束縛する行為と密接に関係しています。
 
-Arrow functions behavior with `this` keyword varies from that of normal functions. Each function in JavaScript defines its own `this` context but arrow functions capture the `this` value of the nearest enclosing context. Check out the following code:
+アロー関数の動作は、`this`の動きとともに通常の関数とは異なります。JavaScriptにおける其々の関数は`this`の文脈を定義できます。しかし、アロー関数が捉える`this`は、閉じた文脈となります。次のコードを見てください。
 
 ```javascript
 function Person() {
-    // The Person() constructor defines `this` as an instance of itself.
+    // Person()コンストラクターが定義する`this`はインスタンスそのものだ
     this.age = 0;
 
     setInterval(function growUp() {
-        // In non-strict mode, the growUp() function defines `this`
-        // as the global object, which is different from the `this`
-        // defined by the Person() constructor.
+        // strict mode　ではない時、 grouUp() 関数は `this` を 
+        // globalオブジェクトとして定義する。Person()コンストラクターが定義した`this`
+        // とは異なる
         this.age++;
     }, 1000);
 }
 var p = new Person();
 ```
 
-In ECMAScript 3/5, this issue was fixed by assigning the value in `this` to a variable that could be closed over.
+ES3,ES5において、以上の事案に対してはthisを変数に割り当てることで対応してきました。
 
 ```javascript
 function Person() {
@@ -131,14 +132,13 @@ function Person() {
     self.age = 0;
 
     setInterval(function growUp() {
-        // The callback refers to the `self` variable of which
-        // the value is the expected object.
+        // コールバックが参照する`self`変数は想定しているオブジェクトを指し示す
         self.age++;
     }, 1000);
 }
 ```
 
-As mentioned above, arrow functions capture the this value of the nearest enclosing context, so the following code works as expected, even with nested arrow functions.
+上記から、アロー関数は`this`の値を最も近い閉じた文脈を捉えることができるため、ネストしたアロー関数に対しても、以下のコードのように想定通りの動きをすることになります。
 
 ```javascript
 function Person() {
@@ -146,14 +146,14 @@ function Person() {
 
     setInterval(() => {
         setTimeout(() => {
-            this.age++; // `this` properly refers to the person object
+            this.age++; //　`this` は適切にpersonオブジェクトを参照する
         }, 1000);
     }, 1000);
 }
 
 var p = new Person();
 ```
-[Read more about 'Lexical this' in arrow functions here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#Lexical_this)
+[アロー関数内の`Lexical this`についてよく知りたければ参照](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#Lexical_this)
 
 <br>
 
