@@ -10,7 +10,7 @@
 * [スプレッド演算子　／レスト演算子](#4-spread--rest-operator)
 * [オブジェクトリテラルの拡張](#5-object-literal-extensions)
 * [８進数と２進数リテラル](#6-octal-and-binary-literals)
-* [Array and Object Destructuring](#7-array-and-object-destructuring)
+* [配列とオブジェクトの分解](#7-array-and-object-destructuring)
 * [super in Objects](#8-super-in-objects)
 * [Template Literal and Delimiters](#9-template-literal-and-delimiters)
 * [for...of vs for...in](#10-forof-vs-forin)
@@ -248,9 +248,9 @@ console.log(bValue); // 2
 
 <br>
 
-### 7. Array and Object Destructuring
+### 7. 配列とオブジェクトの分解
 
-Destructuring helps in avoiding the need for temp variables when dealing with object and arrays.
+分解によってオブジェクトと配列を扱う際に一時的な変数の使用を避けることができます。
 
 ```javascript
 function foo() {
