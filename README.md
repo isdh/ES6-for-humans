@@ -157,9 +157,9 @@ var p = new Person();
 
 <br>
 
-### 3. Default Function Parameters
+### 3. 関数のデフォルトパラメーター
 
-ES6 allows you to set default parameters in function definitions. Here is a simple illustration.
+ES6では関数定義時にでデフォルトパラメーターを設定することができます。以下を参照してください。
 
 ```javascript
 let getFinalPrice = (price, tax = 0.7) => price + price * tax;
