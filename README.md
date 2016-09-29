@@ -9,7 +9,7 @@
 * [関数のデフォルトパラメーター](#3-default-function-parameters)
 * [スプレッド演算子　／レスト演算子](#4-spread--rest-operator)
 * [オブジェクトリテラルの拡張](#5-object-literal-extensions)
-* [Octal and Binary Literals](#6-octal-and-binary-literals)
+* [８進数と２進数リテラル](#6-octal-and-binary-literals)
 * [Array and Object Destructuring](#7-array-and-object-destructuring)
 * [super in Objects](#8-super-in-objects)
 * [Template Literal and Delimiters](#9-template-literal-and-delimiters)
@@ -232,10 +232,11 @@ console.log(car);
 
 <br>
 
-### 6. Octal and Binary Literals
+### 6. ８進数と２進数リテラル
 
-ES6 has new support for octal and binary literals.
-Prependending a number with `0o` or `0O` would convert it into octal value. Have a look at the following code:
+ES6では新たに８進数と２進数リテラルをサポートしました。
+`0o`か`0O`で始まる number は８進数に変換されます。
+以下のコードを見てください。
 
 ```javascript
 let oValue = 0o10;
