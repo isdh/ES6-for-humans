@@ -159,7 +159,7 @@ var p = new Person();
 
 ### 3. 関数のデフォルトパラメーター
 
-ES6では関数定義時にでデフォルトパラメーターを設定することができます。以下を参照してください。
+ES6では関数定義時にでデフォルトパラメーターを設定することができます。実例をみてください。
 
 ```javascript
 let getFinalPrice = (price, tax = 0.7) => price + price * tax;
