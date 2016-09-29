@@ -327,6 +327,7 @@ for (let nickname of nicknames) {
 // punkeye
 ```
 
+* `for...in` はオブジェクトの*数え上げる事ができる*プロパティをイテレートする
 
 ```javascript
 let nicknames = ['di', 'boo', 'punkeye'];
