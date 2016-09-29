@@ -4,7 +4,7 @@
 
 ### Table of Contents
 
-* [`let`, `const` and block scoping](#1-let-const-and-block-scoping)
+* [`let`, `const` と ブロックスコープ](#1-let-const-and-block-scoping)
 * [Arrow Functions](#2-arrow-functions)
 * [Default Function Parameters](#3-default-function-parameters)
 * [Spread/Rest Operator](#4-spread--rest-operator)
@@ -24,20 +24,21 @@
 
 <br>
 
-### Languages
+### 他言語
 
-* [Chinese Version (Thanks to barretlee)](http://www.barretlee.com/blog/2016/07/09/a-kickstarter-guide-to-writing-es6/)
-* [Portuguese Version (Thanks to alexmoreno)](https://github.com/alexmoreno/ES6-para-humanos)
-* [Russian Version (Thanks to etnolover)](https://github.com/etnolover/ES6-for-humans-translation)
-* [Korean Version (Thanks to scarfunk)](https://github.com/metagrover/ES6-for-humans/tree/korean-version)
-* [French Version (Thanks to tnga)](https://github.com/metagrover/ES6-for-humans/tree/french-version)
-* [Spanish Version (Thanks to carletex)](https://github.com/metagrover/ES6-for-humans/tree/spanish-version)
+* [中国語 (Thanks to barretlee)](http://www.barretlee.com/blog/2016/07/09/a-kickstarter-guide-to-writing-es6/)
+* [ポルトガル語 (Thanks to alexmoreno)](https://github.com/alexmoreno/ES6-para-humanos)
+* [ロシア語 (Thanks to etnolover)](https://github.com/etnolover/ES6-for-humans-translation)
+* [韓国語 (Thanks to scarfunk)](https://github.com/metagrover/ES6-for-humans/tree/korean-version)
+* [フランス語 (Thanks to tnga)](https://github.com/metagrover/ES6-for-humans/tree/french-version)
+* [スペイン語 (Thanks to carletex)](https://github.com/metagrover/ES6-for-humans/tree/spanish-version)
 
 <br>
 
-### 1. let, const and block scoping
+### 1. let, const と ブロックスコープ
 
-`let` allows you to create declarations which are bound to any block, called block scoping. Instead of using `var`, which provides function scope, it is recommended to use `let` in ES6.
+宣言文 `let` はブロックスコープと呼ばれるブロックを作ることが出来ます。
+ES6では、関数スコープで使用していた`var` の代わりに、`let`の使用が推奨されています。
 
 ```javascript
 var a = 2;
@@ -49,7 +50,8 @@ var a = 2;
 console.log(a); // 2
 ```
 
-Another form of block-scoped declaration is the `const`, which creates constants. In ES6, a `const` represents a constant reference to a value. In other words, the value is not frozen, just the assignment of it. Here's a simple example:
+ブロックスコープにおけるもう一つの宣言文は `const` です。`const` は定数を生成します。
+ES6の`const`は、値への参照を示す事になります。言い換えれば、この値は凍結されるわけではなく、割り当てているだけなのです。例を見て下さい。
 
 ```javascript
 {
@@ -60,17 +62,16 @@ Another form of block-scoped declaration is the `const`, which creates constants
     ARR.push(7);
     console.log(ARR); // [5,6,7]
     ARR = 10; // TypeError: Assignment to constant variable
-    ARR[0] = 3; // value is mutable
+    ARR[0] = 3; // 値は変更可能
     console.log(ARR); // [3,6,7]
 }
 ```
 
-A few things to keep in mind:
-
-* Hoisting of `let` and `const` vary from the traditional hoisting of variables and functions. Both `let` and `const` are hoisted, but cannot be accessed before their declaration, because of [Temporal Dead Zone](http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified/) 
-* `let` and `const` are scoped to the nearest enclosing block.
-* When using `const`, use CAPITAL_CASING (this is a common convention).
-* `const` has to be defined with its declaration.
+頭の片隅に覚えていてほしいこと:
+* `let`、`const`のホイスティングは今までの変数、関数のホイスティングから様変わりしました。`let`も`const`もどちらも、巻き上げるが、その宣言の前にアクセスすることは出来ません。これは、[Temporal Dead Zone(英語)](http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified/)のためです。
+* `let`と`const`のスコープは最も近い閉じたブロックになります。
+* `const`を使用する際は、大文字で記述して下さい(一般的な慣習でもあります)
+* `const`は宣言すると同時に定義しなければならなりません。
 
 <br>
 
