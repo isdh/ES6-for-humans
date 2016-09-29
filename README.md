@@ -6,8 +6,8 @@
 
 * [`let`, `const` と ブロックスコープ](#1-let-const-and-block-scoping)
 * [アロー関数](#2-arrow-functions)
-* [Default Function Parameters](#3-default-function-parameters)
-* [Spread/Rest Operator](#4-spread--rest-operator)
+* [関数のデフォルトパラメーター](#3-default-function-parameters)
+* [スプレッド演算子　／レスト演算子](#4-spread--rest-operator)
 * [Object Literal Extensions](#5-object-literal-extensions)
 * [Octal and Binary Literals](#6-octal-and-binary-literals)
 * [Array and Object Destructuring](#7-array-and-object-destructuring)
@@ -168,11 +168,11 @@ getFinalPrice(500); // 850
 
 <br>
 
-### 4. Spread / Rest Operator
+### 4. スプレッド演算子　／レスト演算子
 
-`...` operator is referred to as spread or rest operator, depending on how and where it is used.
+`...` 演算子はスプレッド演算子、またはレスト演算子をとして動きます。使用の仕方によって動きが異なります。
 
-When used with any iterable, it acts as to "spread" it into individual elements:
+イテラブルな何かと使用すると、`...`はスプレッド演算子として働く。
 
 ```javascript
 function foo(x, y, z) {
@@ -183,7 +183,7 @@ let arr = [1, 2, 3];
 foo(...arr); // 1 2 3
 ```
 
-The other common usage of `...` is gathering a set of values together into an array. This is referred as "rest" operator.
+`...`のもう一つのよく知られた使い方は値を集めて配列にすることだ。これはレスト演算子として参照される。
 
 ```javascript
 function foo(...args) {
