@@ -194,27 +194,25 @@ foo(1, 2, 3, 4, 5); // [1, 2, 3, 4, 5]
 
 <br>
 
-### 5. Object Literal Extensions
+### 5. オブジェクトリテラルの拡張
 
-ES6 allows declaring object literals by providing shorthand syntax for initializing properties from variables and defining function methods. It also enables the ability to have computed property keys in an object literal definition.
+ES6ではオブジェクトリテラルの宣言の際に、プロパティの初期化と関数メソッドの定義を短縮して記述することができます。これはオブジェクトリテラルの定義からプロパティのキーを計算することができるためです。
 
 ```javascript
 function getCar(make, model, value) {
     return {
-        // with property value shorthand
-        // syntax, you can omit the property
-        // value if key matches variable
-        // name
-        make,  // same as make: make
-        model, // same as model: model
-        value, // same as value: value
+        // プロパティの値を短縮して記述することで、
+        // キーと変数名が一致したプロパティになります
+        make,  // make: make   と同じ
+        model, // model: model と同じ
+        value, // value: value と同じ
 
         // computed values now work with
         // object literals
+        // 記述された値はオブジェクトリテラルとして機能します。
         ['make' + make]: true,
 
-        // Method definition shorthand syntax
-        // omits `function` keyword & colon
+        // メソッド定義の短縮形では`function`キーワードとコロンを省略することができます
         depreciate() {
             this.value -= 2500;
         }
