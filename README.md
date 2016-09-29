@@ -15,7 +15,7 @@
 * [テンプレートリテラルとデリミタ](#9-template-literal-and-delimiters)
 * [for...of vs for...in](#10-forof-vs-forin)
 * [Map と WeakMap](#11-map-and-weakmap)
-* [Set and WeakSet](#12-set-and-weakset)
+* [Set と WeakSet](#12-set-and-weakset)
 * [Classes in ES6](#13-classes-in-es6)
 * [Symbol](#14-symbol)
 * [Iterators](#15-iterators)
@@ -401,7 +401,7 @@ w.has(o1); // false
 
 ### 12. Set and WeakSet
 
-*Set* objects are collections of unique values. Duplicate values are ignored, as the collection must have all unique values. The values can be primitive types or object references.
+*Set* オブジェクトはユニークなコレクションです。重複した値を無視する、全てがユニークな値を保持するコレクションです。*Set*にはプリミティブ値でも、オブジェクトでも格納できます。
 
 ```javascript
 let mySet = new Set([1, 1, 2, 2, 3, 3]);
@@ -411,7 +411,7 @@ mySet.add('strings');
 mySet.add({ a: 1, b:2 });
 ```
 
-You can iterate over a set by insertion order using either the `forEach` method or the `for...of` loop.
+`forEach`メソッド、または`for...of`ループを使用して、Setをイテレートし、順番にアクセスすることが出来ます。
 
 ```javascript
 mySet.forEach((item) => {
@@ -432,11 +432,11 @@ for (let value of mySet) {
     // Object { a: 1, b: 2 }
 }
 ```
-Sets also have the `delete()` and `clear()` methods.
+また、Setは`delete()`メソッドと`clear()`メソッドを保持します。
 
 **WeakSet**
 
-Similar to `WeakMap`, the `WeakSet` object lets you store weakly held *objects* in a collection. An object in the `WeakSet` occurs only once; it is unique in the WeakSet's collection.
+`WeakMap`と同様に、`WeakSet`は弱い*オブジェクト*への参照を持つコレクションです。`WeakSet`はユニークなオブジェクトを持つコレクションであるため、`WeakSet`内にはただ一度だけ現れます。
 
 ```javascript
 var ws = new WeakSet();
