@@ -314,7 +314,7 @@ console.log(`Hi ${user}!`); // Hi Kevin!
 <br>
 
 ### 10. for...of vs for...in
-* `for...of` iterates over iterable objects, such as array.
+* `for...of` 配列のようなイテラブルなオブジェクトをイテレート(順繰りに処理)する
 
 ```javascript
 let nicknames = ['di', 'boo', 'punkeye'];
@@ -327,7 +327,6 @@ for (let nickname of nicknames) {
 // punkeye
 ```
 
-* `for...in` iterates over all enumerable properties of an object.
 
 ```javascript
 let nicknames = ['di', 'boo', 'punkeye'];
