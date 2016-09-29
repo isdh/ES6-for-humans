@@ -27,6 +27,11 @@
 ### Languages
 
 * [Chinese Version (Thanks to barretlee)](http://www.barretlee.com/blog/2016/07/09/a-kickstarter-guide-to-writing-es6/)
+* [Portuguese Version (Thanks to alexmoreno)](https://github.com/alexmoreno/ES6-para-humanos)
+* [Russian Version (Thanks to etnolover)](https://github.com/etnolover/ES6-for-humans-translation)
+* [Korean Version (Thanks to scarfunk)](https://github.com/metagrover/ES6-for-humans/tree/korean-version)
+* [French Version (Thanks to tnga)](https://github.com/metagrover/ES6-for-humans/tree/french-version)
+* [Spanish Version (Thanks to carletex)](https://github.com/metagrover/ES6-for-humans/tree/spanish-version)
 
 <br>
 
@@ -39,6 +44,7 @@ var a = 2;
 {
     let a = 3;
     console.log(a); // 3
+    let a = 5; // TypeError: Identifier 'a' has already been declared
 }
 console.log(a); // 2
 ```
@@ -47,10 +53,13 @@ Another form of block-scoped declaration is the `const`, which creates constants
 
 ```javascript
 {
+    const B = 5;
+    B = 10; // TypeError: Assignment to constant variable
+
     const ARR = [5, 6];
     ARR.push(7);
     console.log(ARR); // [5,6,7]
-    ARR = 10; // TypeError
+    ARR = 10; // TypeError: Assignment to constant variable
     ARR[0] = 3; // value is mutable
     console.log(ARR); // [3,6,7]
 }
@@ -60,21 +69,22 @@ A few things to keep in mind:
 
 * Hoisting of `let` and `const` vary from the traditional hoisting of variables and functions. Both `let` and `const` are hoisted, but cannot be accessed before their declaration, because of [Temporal Dead Zone](http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified/) 
 * `let` and `const` are scoped to the nearest enclosing block.
-* When using `const`, use CAPITAL_CASING.
+* When using `const`, use CAPITAL_CASING (this is a common convention).
 * `const` has to be defined with its declaration.
 
 <br>
 
 ### 2. Arrow Functions
 
-Arrow Functions are a short-hand notation for writing functions in ES6. The arrow function definition consists of a parameter list `( ... )`, followed by the `=>` marker and a function body.
+Arrow functions are a short-hand notation for writing functions in ES6. The arrow function definition consists of a parameter list `( ... )`, followed by the `=>` marker and a function body.
 
 ```javascript
+// Classical Function Expression
 let addition = function(a, b) {
     return a + b;
 };
 
-// Implementation with Arrow Function
+// Implementation with arrow function
 let addition = (a, b) => a + b;
 ```
 Note that in the above example, the `addition` arrow function is implemented with "concise body" which does not need an explicit return statement.
@@ -95,7 +105,7 @@ console.log(breakfast); // ['apples', 'bananas', 'oranges']
 
 Arrow functions don't just make the code shorter. They are closely related to `this` binding behavior.
 
-Arrow functions behavior with `this` keyword varies from that of normal functions. Each function in JavaScript defines its own `this` context but Arrow functions capture the `this` value of the enclosing context. Check out the following code:
+Arrow functions behavior with `this` keyword varies from that of normal functions. Each function in JavaScript defines its own `this` context but arrow functions capture the `this` value of the nearest enclosing context. Check out the following code:
 
 ```javascript
 function Person() {
@@ -127,14 +137,16 @@ function Person() {
 }
 ```
 
-As mentioned above, Arrow functions capture the this value of the enclosing context, so the following code works as expected.
+As mentioned above, arrow functions capture the this value of the nearest enclosing context, so the following code works as expected, even with nested arrow functions.
 
 ```javascript
 function Person() {
     this.age = 0;
 
     setInterval(() => {
-        this.age++; // `this` properly refers to the person object
+        setTimeout(() => {
+            this.age++; // `this` properly refers to the person object
+        }, 1000);
     }, 1000);
 }
 
@@ -289,7 +301,7 @@ child.foo(); // Hello from the Parent
 
 ### 9. Template Literal and Delimiters
 
-ES6 introduces an easier way to add interpolation which are evaluated automatically.
+ES6 introduces an easier way to add interpolations which are evaluated automatically.
 
 * <code>\`${ ... }\`</code> is used for rendering the variables.
 * <code>\`</code> Backtick is used as delimiter.
@@ -389,7 +401,7 @@ w.has(o1); // false
 
 ### 12. Set and WeakSet
 
-Set objects are collections of unique values. Duplicate values are ignored, as the collection must have all unique values. The values can be primitive types or object references.
+*Set* objects are collections of unique values. Duplicate values are ignored, as the collection must have all unique values. The values can be primitive types or object references.
 
 ```javascript
 let mySet = new Set([1, 1, 2, 2, 3, 3]);
@@ -495,7 +507,7 @@ let c = new Porsche();
 // Creating Porsche
 ```
 
-`extends` allow child class to inherit from parent class in ES6. It is important to note that the derived constructor must call super().
+`extends` allow child class to inherit from parent class in ES6. It is important to note that the derived constructor must call `super()`.
 
 Also, you can call parent class's method in child class's methods using `super.parentMethodName()`
 
@@ -510,7 +522,7 @@ A few things to keep in mind:
 
 ### 14. Symbol
 
-A symbol is a unique and immutable data type introduced in ES6. The purpose of a symbol is to generate a unique identifier but you can never get any access to that identifier.
+A `Symbol` is a unique and immutable data type introduced in ES6. The purpose of a symbol is to generate a unique identifier but you can never get any access to that identifier.
 
 Here’s how you create a symbol:
 
@@ -541,7 +553,7 @@ To retrieve an object’s symbol properties, use `Object.getOwnPropertySymbols(o
 
 An iterator accesses the items from a collection one at a time, while keeping track of its current position within that sequence. It provides a `next()` method which returns the next item in the sequence. This method returns an object with two properties: done and value.
 
-ES6 has `Symbol.iterator` which specifies the default iterator for an object. Whenever an object needs to be iterated (such as at the beginning of a for..of loop), its @@iterator method is called with no arguments, and the returned iterator is used to obtain the values to be iterated.
+ES6 has `Symbol.iterator` which specifies the default iterator for an object. Whenever an object needs to be iterated (such as at the beginning of a for..of loop), its *@@iterator* method is called with no arguments, and the returned iterator is used to obtain the values to be iterated.
 
 Let’s look at an array, which is an iterable, and the iterator it can produce to consume its values:
 
@@ -582,7 +594,7 @@ numbers.next(); // { value: 2, done: false }
 numbers.next(); // { value: 3, done: false }
 ```
 
-Each time yield is called, the yielded value becomes the next value in the sequence.
+Each time *yield* is called, the yielded value becomes the next value in the sequence.
 
 Also, note that generators compute their yielded values on demand, which allows them to efficiently represent sequences that are expensive to compute, or even infinite sequences.
 
@@ -590,7 +602,7 @@ Also, note that generators compute their yielded values on demand, which allows 
 
 ### 17. Promises
 
-ES6 has native support for promises. A promise is an object that is waiting for an asynchronous operation to complete, and when that operation completes, the promise is either fulfilled(resolved) or rejected.
+ES6 has native support for promises. A *promise* is an object that is waiting for an asynchronous operation to complete, and when that operation completes, the promise is either fulfilled(resolved) or rejected.
 
 The standard way to create a Promise is by using the `new Promise()` constructor which accepts a handler that is given two functions as parameters. The first handler (typically named `resolve`) is a function to call with the future value when it's ready; and the second handler (typically named `reject`) is a function to call to reject the Promise if it can't resolve the future value.
 
