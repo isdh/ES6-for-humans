@@ -8,7 +8,7 @@
 * [アロー関数](#2-arrow-functions)
 * [関数のデフォルトパラメーター](#3-default-function-parameters)
 * [スプレッド演算子　／レスト演算子](#4-spread--rest-operator)
-* [Object Literal Extensions](#5-object-literal-extensions)
+* [オブジェクトリテラルの拡張](#5-object-literal-extensions)
 * [Octal and Binary Literals](#6-octal-and-binary-literals)
 * [Array and Object Destructuring](#7-array-and-object-destructuring)
 * [super in Objects](#8-super-in-objects)
