@@ -447,10 +447,10 @@ ws.add(window);
 ws.add(obj);
 
 ws.has(window); // true
-ws.has(foo);    // false, foo has not been added to the set
+ws.has(foo);    // false, fooはsetにまだ加えられていない
 
-ws.delete(window); // removes window from the set
-ws.has(window);    // false, window has been removed
+ws.delete(window); // setからwindowを取り除く
+ws.has(window);    // false, windowを取り除いた
 ```
 
 <br>
@@ -522,18 +522,18 @@ let c = new Porsche();
 
 ### 14. Symbol
 
-A `Symbol` is a unique and immutable data type introduced in ES6. The purpose of a symbol is to generate a unique identifier but you can never get any access to that identifier.
+シンボル(`Symbol`)は値を変更出来ないデータ型です。シンボルの目的は、ユニークな識別子を生成することです。
 
-Here’s how you create a symbol:
+シンボルを作成してみましょう。
 
 ```javascript
 var sym = Symbol("some optional description");
 console.log(typeof sym); // symbol
 ```
 
-Note that you cannot use `new` with `Symbol(…)`.
+`Symbol(…)`を使用する際は、`new`キーワードは不要です。
 
-If a symbol is used as a property/key of an object, it’s stored in a special way that the property will not show up in a normal enumeration of the object’s properties.
+シンボルはオブジェクトのプロパティ、またはキーとして使用された時、通常の数え上げられるプロパティとしては格納されません。
 
 ```javascript
 var o = {
@@ -544,7 +544,7 @@ var o = {
 console.log(Object.getOwnPropertyNames(o)); // val
 ```
 
-To retrieve an object’s symbol properties, use `Object.getOwnPropertySymbols(o)`
+オブジェクトのシンボルとなったプロパティにアクセスするときは、`Object.getOwnPropertySymbols(o)`を使用して下さい。
 
 
 <br>
