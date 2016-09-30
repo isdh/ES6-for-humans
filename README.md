@@ -551,11 +551,12 @@ console.log(Object.getOwnPropertyNames(o)); // val
 
 ### 15. Iterators
 
-An iterator accesses the items from a collection one at a time, while keeping track of its current position within that sequence. It provides a `next()` method which returns the next item in the sequence. This method returns an object with two properties: done and value.
+イテレータはコレクションの１つのアイテムに一度アクセスします。そして、コレクションのアクセスした場所を記憶しています。
+イテレータにはコレクションの次の順番のアイテムを返す`next()`メソッドがあり、返却されたアイテムであるオブジェクトは、doneとvalueという２つのプロパティを持っています。
 
-ES6 has `Symbol.iterator` which specifies the default iterator for an object. Whenever an object needs to be iterated (such as at the beginning of a for..of loop), its *@@iterator* method is called with no arguments, and the returned iterator is used to obtain the values to be iterated.
+ES6は`Symbol.iterator`をもち、オブジェクトのためのイテレータを提供します。オブジェクトはいつでも、for...ofのようなループで数え上げる事ができます。オブジェクトの`@@iterator`メソッドは実行時に引数を持たず、イテレートすることで値を返すイテレータを返します。
 
-Let’s look at an array, which is an iterable, and the iterator it can produce to consume its values:
+配列を見てみましょう。配列はイテラブル(数え上げ可能)です。イテレータは値を出力します。
 
 ```javascript
 var arr = [11,12,13];
@@ -568,7 +569,7 @@ itr.next(); // { value: 13, done: false }
 itr.next(); // { value: undefined, done: true }
 ```
 
-Note that you can write custom iterators by defining `obj[Symbol.iterator]()` with the object definition.
+オブジェクトの定義の際に`obj[Symbol.iterator]()` を定義することで、自前のイテレータを記述することもできます。
 
 <br>
 
