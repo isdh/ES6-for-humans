@@ -575,10 +575,10 @@ itr.next(); // { value: undefined, done: true }
 
 ### 16. Generators
 
-Generator functions are a new feature in ES6 that allow a function to generate many values over time by returning an object which can be iterated over to pull values from the function one value at a time.
+ジェネレータ関数はES6の新しい特徴の１つです。ジェネレータ関数は何度も値を返します。返り値となるオブジェクトをイテレートし、１度のイテレートで１つ、値を取得します。
 
-A generator function returns an **iterable object** when it's called.
-It is written using the new `*` syntax as well as the new `yield` keyword introduced in ES6.
+ジェネレータ関数は実行された際に、**イテラブルなオブジェクト**を返します。
+`*`という新しいシンタックスと`yield`というES6の新しいキーワードによって記述されます。
 
 ```javascript
 function *infiniteNumbers() {
@@ -595,9 +595,9 @@ numbers.next(); // { value: 2, done: false }
 numbers.next(); // { value: 3, done: false }
 ```
 
-Each time *yield* is called, the yielded value becomes the next value in the sequence.
+yidldを呼んだ回数分だけ、yieldされた値が次の値になります。
 
-Also, note that generators compute their yielded values on demand, which allows them to efficiently represent sequences that are expensive to compute, or even infinite sequences.
+また、ジェネレータはオンデマンドでyieldされた値を計算し、効率よく、連続したシークエンスに要求に応じてアクセスできます。無限に続くシークエンスですら可能です。
 
 <br>
 
