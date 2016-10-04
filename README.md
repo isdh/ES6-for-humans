@@ -603,9 +603,9 @@ yidldを呼んだ回数分だけ、yieldされた値が次の値になります�
 
 ### 17. Promises
 
-ES6 has native support for promises. A *promise* is an object that is waiting for an asynchronous operation to complete, and when that operation completes, the promise is either fulfilled(resolved) or rejected.
+ES6ではネイティブでPromiseをサポートしています。プロミスは非同期実行が完了することを待ち続けるオブジェクトです。非同期実行が完了したとき、プロミス(つまり約束)は「遂行(fulfilled/resolved)」されるか、「破棄(rejected)」されます。
 
-The standard way to create a Promise is by using the `new Promise()` constructor which accepts a handler that is given two functions as parameters. The first handler (typically named `resolve`) is a function to call with the future value when it's ready; and the second handler (typically named `reject`) is a function to call to reject the Promise if it can't resolve the future value.
+Promiseをつくる通常の方法は、`new Promise()`コンストラクターを使用することで、2つの与えられた関数を引数として扱える様になります。第一引数は`resolve`と呼ばれる関数で、**future valueとともに** 実行されることが想定されます。第二引数は`reject`で、Promiseが**future value**をresolveせず、rejectされたときに実行されます。
 
 ```javascript
 var p = new Promise(function(resolve, reject) {  
@@ -617,14 +617,15 @@ var p = new Promise(function(resolve, reject) {
 });
 ```
 
-Every Promise has a method named `then` which takes a pair of callbacks. The first callback is called if the promise is resolved, while the second is called if the promise is rejected.
+全てのPromiseは`then`と呼ばれるメソッドをもっています。このメソッドはペアとなるコールバックを保持します。
+１つめのコールバックはプロミスが遂行された際に、もう一方はプロミスが破棄された時に呼ばれます。
 
 ```javascript
 p.then((val) => console.log("Promise Resolved", val),
        (err) => console.log("Promise Rejected", err));
 ```
 
-Returning a value from `then` callbacks will pass the value to the next `then` callback.
+`then`のコールバックから返却された値は次の`then`のコールバックに渡されます。
 
 ```javascript
 var hello = new Promise(function(resolve, reject) {  
@@ -636,8 +637,8 @@ hello.then((str) => `${str} World`)
      .then((str) => console.log(str)) // Hello World!
 ```
 
-When returning a promise, the resolved value of the promise will get passed to the next callback to effectively chain them together.
-This is a simple technique to avoid "callback hell".
+Promiseが帰ってきた時、遂行された値は次のコールバックにチェーンして渡していきます。
+これはコールバック地獄を避けるシンプルな１つの策です。。
 
 ```javascript
 var p = new Promise(function(resolve, reject) {  
