@@ -32,6 +32,7 @@
 * [韓国語 (Thanks to scarfunk)](https://github.com/metagrover/ES6-for-humans/tree/korean-version)
 * [フランス語 (Thanks to tnga)](https://github.com/metagrover/ES6-for-humans/tree/french-version)
 * [スペイン語 (Thanks to carletex)](https://github.com/metagrover/ES6-for-humans/tree/spanish-version)
+* [日本語 (Thanks to isdh)](https://github.com/metagrover/ES6-for-humans/tree/japanese-version)
 
 <br>
 
@@ -354,7 +355,7 @@ var myMap = new Map();
 
 var keyString = "a string",
     keyObj = {},
-    keyFunc = function() {};
+    keyFunc = () => {};
 
 // 値をセットします
 myMap.set(keyString, "'a string'　に割り当てた値");
@@ -383,7 +384,7 @@ w.set('a', 'b');
 // Uncaught TypeError: Invalid value used as weak map key
 
 var o1 = {},
-    o2 = function(){},
+    o2 = () => {},
     o3 = window;
 
 w.set(o1, 37);
@@ -608,7 +609,7 @@ ES6ではネイティブでPromiseをサポートしています。プロミス�
 Promiseをつくる通常の方法は、`new Promise()`コンストラクターを使用することで、2つの与えられた関数を引数として扱える様になります。第一引数は`resolve`と呼ばれる関数で、**future valueとともに** 実行されることが想定されます。第二引数は`reject`で、Promiseが**future value**をresolveせず、rejectされたときに実行されます。
 
 ```javascript
-var p = new Promise(function(resolve, reject) {  
+var p = new Promise((resolve, reject) => {  
     if (/* condition */) {
         resolve(/* value */);  // fulfilled successfully
     } else {
@@ -628,9 +629,7 @@ p.then((val) => console.log("Promise Resolved", val),
 `then`のコールバックから返却された値は次の`then`のコールバックに渡されます。
 
 ```javascript
-var hello = new Promise(function(resolve, reject) {  
-    resolve("Hello");
-});
+var hello = new Promise((resolve, reject) => { resolve("Hello") });
 
 hello.then((str) => `${str} World`)
      .then((str) => `${str}!`)
@@ -641,17 +640,11 @@ Promiseが帰ってきた時、遂行された値は次のコールバックに�
 これはコールバック地獄を避けるシンプルな１つの策です。。
 
 ```javascript
-var p = new Promise(function(resolve, reject) {  
-    resolve(1);
-});
+var p = new Promise((resolve, reject) => { resolve(1) });
 
-var eventuallyAdd1 = (val) => {
-    return new Promise(function(resolve, reject){
-        resolve(val + 1);
-    });
-}
+var eventuallyAdd1 = (val) => new Promise((resolve, reject) => { resolve(val + 1) });
 
 p.then(eventuallyAdd1)
  .then(eventuallyAdd1)
- .then((val) => console.log(val)) // 3
+ .then((val) => console.log(val)); // 3
 ```
